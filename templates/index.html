@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Wine Quality Predictor</title>
+  <style>
+    body { font-family: Arial; max-width: 500px; margin: 40px auto; }
+    label { display: block; margin-top: 10px; }
+    input { width: 100%; padding: 6px; }
+    button { margin-top: 20px; padding: 10px 20px; }
+    .result { margin-top: 20px; font-size: 1.3em; color: #7b1e3a; }
+  </style>
+</head>
+<body>
+  <h2>🍷 Wine Quality Predictor</h2>
+  <form method="POST">
+    {% for f in features %}
+      <label>{{ f }}
+        <input type="number" step="any" name="{{ f }}" required>
+      </label>
+    {% endfor %}
+    <button type="submit">Predict</button>
+  </form>
+  {% if prediction is not none %}
+    <div class="result">Predicted quality: {{ prediction }} / 10</div>
+  {% endif %}
+</body>
+</html>
